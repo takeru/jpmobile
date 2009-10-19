@@ -76,7 +76,11 @@ module Jpmobile::Mobile
 
     # cookieに対応しているか？
     def supports_cookie?
-      false
+      if cache_size=="500"
+        true
+      else
+        false
+      end
     end
     private
     # モデル名を返す。
@@ -92,6 +96,13 @@ module Jpmobile::Mobile
     # 画面の情報を含むハッシュを返す。
     def display_info
       DISPLAY_INFO[model_name] || {}
+    end
+
+    def cache_size
+      if @request.env["HTTP_USER_AGENT"] =~ /\(c(\d+);/
+        return $1
+      end
+      return nil
     end
   end
 end

@@ -41,6 +41,9 @@ module Jpmobile
       if show_all || request.mobile.instance_of?(Mobile::Willcom)
         s << willcom_location_link_to(str||"Willcom", options)
       end
+      if show_all || request.mobile.instance_of?(Mobile::Dummy)
+        s << link_to_url(str, url_for(options))
+      end
       return s.join("<br>\n")
     end
 
@@ -52,7 +55,7 @@ module Jpmobile
         options[:only_path] = false
         url = url_for(options)
       end
-      return %{<a href="#{url}" lcs>#{str}</a>}
+      return %{<a href="#{url}" rel="nofollow" lcs="1">#{str}</a>}
     end
 
     # DoCoMoでオープンiエリアを取得するためのURLを返す。
@@ -80,7 +83,7 @@ module Jpmobile
         options[:only_path] = false
         url = url_for(options)
       end
-      return %{<a href="#{url}" utn>#{str}</a>}
+      return %{<a href="#{url}" rel="nofollow" utn>#{str}</a>}
     end
 
     # DoCoMoでiモードIDを取得するためのリンクを返す。
@@ -138,7 +141,7 @@ module Jpmobile
         options[:only_path] = false
         url = url_for(options)
       end
-      return %{<a z href="#{url}">#{str}</a>}
+      return %{<a z href="#{url}" rel="nofollow">#{str}</a>}
     end
 
     # Softbank(含むVodafone 3G)で位置情報を取得するためのURLを返す。
@@ -179,7 +182,7 @@ module Jpmobile
     private
     # 外部へのリンク
     def link_to_url(str, url)
-      %{<a href="#{url}">#{str}</a>}
+      %{<a href="#{url}" rel="nofollow">#{str}</a>}
     end
   end
 end

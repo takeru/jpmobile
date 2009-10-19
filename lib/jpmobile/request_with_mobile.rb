@@ -32,13 +32,26 @@ module Jpmobile
     # 携帯電話でない場合はnilを返す。
     def mobile
       return @__mobile if @__mobile
+      c = mobile_class(user_agent)
+      return @__mobile = c.new(self) if c
+      nil
+#      Jpmobile::Mobile.carriers.each do |const|
+#        c = Jpmobile::Mobile.const_get(const)
+#        return @__mobile = c.new(self) if c::USER_AGENT_REGEXP && user_agent =~ c::USER_AGENT_REGEXP
+#      end
+#      nil
+    end
 
+    def mobile_class(ua)
       Jpmobile::Mobile.carriers.each do |const|
         c = Jpmobile::Mobile.const_get(const)
-        return @__mobile = c.new(self) if c::USER_AGENT_REGEXP && user_agent =~ c::USER_AGENT_REGEXP
+        if c::USER_AGENT_REGEXP && ua =~ c::USER_AGENT_REGEXP
+          return c
+        end
       end
-      nil
+      return nil
     end
+    module_function :mobile_class
   end
 end
 

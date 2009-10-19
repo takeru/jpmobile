@@ -86,12 +86,21 @@ module Jpmobile
       def apply_incoming?(controller)
         # Vodafone 3G/Softbank(Shift-JISにすると絵文字で不具合が生じる)以外の
         # 携帯電話の場合に適用する。
-        mobile = controller.request.mobile
-        mobile && !(mobile.instance_of?(Jpmobile::Mobile::Vodafone)||mobile.instance_of?(Jpmobile::Mobile::Softbank))
+        ret = _apply_sjis_conv?(controller)
+        if ret
+          if controller.respond_to?(:skip_incoming_sjis_filter?) && controller.skip_incoming_sjis_filter?
+            ret = false
+          end
+        end
+        return ret
       end
       def apply_outgoing?(controller)
         [nil, "text/html", "application/xhtml+xml"].include?(controller.response.content_type) &&
-          apply_incoming?(controller)
+          _apply_sjis_conv?(controller)
+      end
+      def _apply_sjis_conv?(controller)
+        mobile = controller.request.mobile
+        mobile && !(mobile.instance_of?(Jpmobile::Mobile::Vodafone)||mobile.instance_of?(Jpmobile::Mobile::Softbank))
       end
     end
 

@@ -1,4 +1,4 @@
-$KCODE='u'
+$KCODE='u' unless defined? Encoding
 module Jpmobile
   module Emoticon
     SJIS_TO_UNICODE = {}

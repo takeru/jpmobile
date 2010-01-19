@@ -2,7 +2,7 @@
 
 # plugins/以下にgeokitがインストールされている場合は読み込む
 begin
-  require RAILS_ROOT + '/vendor/plugins/geokit/lib/geo_kit/mappable'
+  require RAILS_ROOT + '/vendor/plugins/geokit/lib/geo_kit/mappable' if defined? RAILS_ROOT
 rescue MissingSourceFile, NameError
 end
 

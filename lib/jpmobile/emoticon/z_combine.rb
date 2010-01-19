@@ -1,7 +1,7 @@
 $KCODE='u' unless defined? Encoding
 module Jpmobile
   module Emoticon
-    SJIS_TO_UNICODE = {}
+    SJIS_TO_UNICODE = {} unless defined? SJIS_TO_UNICODE
     SJIS_TO_UNICODE.update(DOCOMO_SJIS_TO_UNICODE)
     SJIS_TO_UNICODE.update(AU_SJIS_TO_UNICODE)
     SJIS_TO_UNICODE.freeze

@@ -10,8 +10,10 @@ begin
     desc 'run unit testing (core test)'
     Spec::Rake::SpecTask.new(:unit) do |t|
       spec_dir = File.join(File.dirname(__FILE__), '..', 'spec')
+      test_dir = File.join(File.dirname(__FILE__), '..', 'test')
       t.spec_opts = File.read(File.join(spec_dir, 'spec.opts')).split
       t.spec_files = FileList[File.join(spec_dir, 'unit', '**', '*_spec.rb')]
+      t.spec_files += FileList[File.join(test_dir, 'legacy', '**', '*_test.rb')]
     end
   end
 rescue LoadError

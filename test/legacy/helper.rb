@@ -2,6 +2,7 @@ require 'test/unit'
 require 'rubygems'
 require 'action_controller'
 require 'rack'
+require 'spec/test/unit' if defined? Spec
 
 RAILS_ENV = "test"
 require File.dirname(__FILE__)+'/../../lib/jpmobile'

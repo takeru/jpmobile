@@ -23,6 +23,7 @@ end
 namespace :test do
   desc "run jpmobile legacy tests"
   Rake::TestTask.new(:legacy) do |t|
+    t.libs << '.'
     t.libs << 'lib'
     t.pattern = 'test/legacy/**/*_test.rb'
     t.verbose = true

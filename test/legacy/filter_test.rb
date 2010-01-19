@@ -1,8 +1,10 @@
+# -*- encoding: utf-8 -*-
 require File.dirname(__FILE__)+'/helper'
 
 class FilterTest < Test::Unit::TestCase
   def setup
     @aiu_sjis = "\202\240\202\242\202\244" # あいう
+    @aiu_sjis.force_encoding('Shift_JIS') if @aiu_sjis.respond_to? :force_encoding
     @aiu_utf8 = "\343\201\202\343\201\204\343\201\206" # あいう
 
     @aiu_zhz = "\343\201\202\357\275\262\343\202\246" # あイウ (イ半角), UTF-8
@@ -12,6 +14,7 @@ class FilterTest < Test::Unit::TestCase
     @abracadabra_z_utf8 = "\343\202\242\343\203\226\343\203\251\343\202\253\343\203\200\343\203\226\343\203\251" # アブラカダブラ, UTF-8
     @abracadabra_h_utf8 = "\357\275\261\357\276\214\357\276\236\357\276\227\357\275\266\357\276\200\357\276\236\357\276\214\357\276\236\357\276\227" # アブラカダブラ(半角), UTF-8
     @abracadabra_z_sjis = "\203A\203u\203\211\203J\203_\203u\203\211" # アブラカダブラ, Shift_JIS
+    @abdacadabra_z_sjis.force_encoding('Shift_JIS') if @abdacadabra_z_sjis.respond_to? :force_encoding
   end
   def test_filter_sjis
     filter = Jpmobile::Filter::Sjis.new

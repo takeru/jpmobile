@@ -38,7 +38,7 @@ namespace :test do
       # generate rails app
       FileUtils.rm_rf(rails_root)
       FileUtils.mkdir_p(rails_root)
-      system "rails _#{rails_version}_ --force #{rails_root}"
+      system "rails _#{rails_version}_ -q --force #{rails_root}"
 
       # setup jpmobile
       plugin_path = File.join(rails_root, 'vendor', 'plugins', 'jpmobile')

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 module Jpmobile
   # 絵文字関連処理
   module Emoticon

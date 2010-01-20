@@ -38,6 +38,26 @@ module Jpmobile
       end
     end
 
+    if defined? Encoding
+      class << self
+        def external_to_unicodecr_docomo_with_force_encoding(str)
+          original_encoding = str.encoding
+          bin_str = str.dup.tap {|s| s.force_encoding('ASCII-8BIT') }
+          external_to_unicodecr_docomo_without_force_encoding(bin_str).tap {|s| s.force_encoding(original_encoding)}
+        end
+        alias external_to_unicodecr_docomo_without_force_encoding external_to_unicodecr_docomo
+        alias external_to_unicodecr_docomo external_to_unicodecr_docomo_with_force_encoding
+
+        def external_to_unicodecr_au_with_force_encoding(str)
+          original_encoding = str.encoding
+          bin_str = str.dup.tap {|s| s.force_encoding('ASCII-8BIT') }
+          external_to_unicodecr_au_without_force_encoding(bin_str).tap {|s| s.force_encoding(original_encoding)}
+        end
+        alias external_to_unicodecr_au_without_force_encoding external_to_unicodecr_au
+        alias external_to_unicodecr_au external_to_unicodecr_au_with_force_encoding
+      end
+    end
+
     # +str+のなかでUTF8のSoftBank絵文字を(+0x1000だけシフトして)Unicode数値文字参照に変換した文字列を返す。
     def self.external_to_unicodecr_softbank(str)
       # SoftBank Unicode
@@ -101,6 +121,17 @@ module Jpmobile
           # 変換先が定義されていない。
           match
         end
+      end
+    end
+    if defined? Encoding
+      class << self
+        def unicodecr_to_external_with_force_encoding(str, conversion_table=nil, to_sjis=true)
+          original_encoding = str.encoding
+          bin_str = str.dup.tap {|s| s.force_encoding('ASCII-8BIT') }
+          unicodecr_to_external_without_force_encoding(bin_str, conversion_table, to_sjis).tap {|s| s.force_encoding(original_encoding) }
+        end
+        alias unicodecr_to_external_without_force_encoding unicodecr_to_external
+        alias unicodecr_to_external unicodecr_to_external_with_force_encoding
       end
     end
     # +str+ のなかでUnicode数値文字参照で表記された絵文字をUTF-8に置換する。

@@ -10,7 +10,7 @@ module Jpmobile
 
     SJIS_REGEXP = Regexp.union(*SJIS_TO_UNICODE.keys.map {|s|
       if defined? Encoding
-        Regexp.compile(Regexp.escape([s].pack('n').force_encoding('Shift_JIS')).force_encoding('Shift_JIS'),nil)
+        Regexp.compile(Regexp.escape([s].pack('n').force_encoding('ASCII-8BIT')),nil)
       else
         Regexp.compile(Regexp.escape([s].pack('n'),"s"),nil,'s')
       end
@@ -19,14 +19,14 @@ module Jpmobile
 
     DOCOMO_SJIS_REGEXP      = Regexp.union(*DOCOMO_SJIS_TO_UNICODE.keys.map{|s|
       if defined? Encoding
-        Regexp.compile(Regexp.escape([s].pack('n').force_encoding('Shift_JIS')).force_encoding('Shift_JIS'),nil)
+        Regexp.compile(Regexp.escape([s].pack('n').force_encoding('ASCII-8BIT')),nil)
       else
         Regexp.compile(Regexp.escape([s].pack('n'),"s"),nil,'s')
       end
     })
     AU_SJIS_REGEXP          = Regexp.union(*AU_SJIS_TO_UNICODE.keys.map{|s|
       if defined? Encoding
-        Regexp.compile(Regexp.escape([s].pack('n').force_encoding('Shift_JIS')).force_encoding('Shift_JIS'),nil)
+        Regexp.compile(Regexp.escape([s].pack('n').force_encoding('ASCII-8BIT')),nil)
       else
         Regexp.compile(Regexp.escape([s].pack('n'),"s"),nil,'s')
       end

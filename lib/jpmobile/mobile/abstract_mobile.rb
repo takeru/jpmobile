@@ -8,9 +8,9 @@ module Jpmobile::Mobile
     end
 
     # 対応するuser-agentの正規表現
-    USER_AGENT_REGEXP = nil
+    # subclass should define USER_AGENT_REGEXP
     # 対応するメールアドレスの正規表現
-    MAIL_ADDRESS_REGEXP = nil
+    # subclass should define MAIL_ADDRESS_REGEXP
 
     # 緯度経度があれば Position のインスタンスを返す。
     def position; return nil; end

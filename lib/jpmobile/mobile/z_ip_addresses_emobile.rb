@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # = IPアドレス帯域テーブル(手動更新分)
 # == EMOBILE
 # http://developer.emnet.ne.jp/ipaddress.html

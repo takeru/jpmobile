@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require 'action_pack'
 
 class ActionController::Base

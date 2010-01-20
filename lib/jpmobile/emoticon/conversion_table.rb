@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 Jpmobile::Emoticon::CONVERSION_TABLE_TO_DOCOMO = {
   0xE63E=>0xE63E,
   0xE63F=>0xE63F,

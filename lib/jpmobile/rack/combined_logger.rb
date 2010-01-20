@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 module Jpmobile
   module Rack
     # Rack::CommonLogger show too few infomation to debugging mobile web application.

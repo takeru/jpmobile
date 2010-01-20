@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 Jpmobile::Emoticon::SOFTBANK_UNICODE_TO_WEBCODE = {
   0xE001 => "G!",
   0xE002 => "G\"",

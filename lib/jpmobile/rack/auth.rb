@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 module Jpmobile
   module Rack
     # in your_app.ru

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 Jpmobile::Emoticon::DOCOMO_SJIS_TO_UNICODE = {
   0xF89F=>0xE63E, 
   0xF8A0=>0xE63F, 

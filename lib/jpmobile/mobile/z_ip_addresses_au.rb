@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 Jpmobile::Mobile::Au::IP_ADDRESSES = 
 ["210.230.128.224/28",
  "121.111.227.160/27",

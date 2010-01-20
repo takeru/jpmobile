@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 Jpmobile::Mobile::Docomo::DISPLAY_INFO =
 {"SH06A3"=>
   {:browser_width=>240,

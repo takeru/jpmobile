@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # =DoCoMo携帯電話
 
 module Jpmobile::Mobile

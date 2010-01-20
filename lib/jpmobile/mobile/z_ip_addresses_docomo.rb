@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # = IPアドレス帯域テーブル(手動更新分)
 # == DoCoMo
 # http://www.nttdocomo.co.jp/service/imode/make/content/ip/index.html

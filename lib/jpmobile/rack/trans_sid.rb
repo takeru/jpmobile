@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # = セッションID を QUERY_STRING などから上書きする処理
 module Jpmobile
   module Rack

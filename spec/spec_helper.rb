@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 unless Spec.const_defined?(:Rails)
   dir = File.dirname(__FILE__)
 

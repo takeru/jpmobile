@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class TransSidBaseController < ApplicationController
   ActionController::Base.session_options[:key] = '_session_id'
   def form

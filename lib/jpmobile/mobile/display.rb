@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # = 端末のディスプレイに関する情報
 #  request.mobile.display
 # で取得できる。

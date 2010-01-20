@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 $KCODE='u' unless defined? Encoding
 module Jpmobile
   module Emoticon

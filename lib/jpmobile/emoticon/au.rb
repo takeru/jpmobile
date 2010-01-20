@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 Jpmobile::Emoticon::AU_SJIS_TO_UNICODE = {
   0xF659=>0xE481,
   0xF75E=>0xE542,

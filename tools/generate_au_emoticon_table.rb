@@ -1,4 +1,5 @@
 #!/usr/bin/ruby
+# -*- coding: utf-8 -*-
 
 # http://www.au.kddi.com/ezfactory/tec/spec/pdf/typeD.pdf から生成
 # - OSXのpreviewで開き、すべてを選択してコピーし、テキストファイルに落とす

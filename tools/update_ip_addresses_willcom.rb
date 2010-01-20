@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby -Ku
+# -*- coding: utf-8 -*-
 # willcomのwebページからIPリストを抽出する場当たり的なスクリプト。
 
 require 'kconv'

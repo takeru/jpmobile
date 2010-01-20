@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 Jpmobile::Mobile::Willcom::IP_ADDRESSES =
 ["61.198.128.0/24",
  "61.198.129.0/24",

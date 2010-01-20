@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require 'scanf'
 
 def to_ranges(array)

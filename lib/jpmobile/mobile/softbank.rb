@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # =SoftBank携帯電話
 # J-PHONE, Vodafoneを含む
 

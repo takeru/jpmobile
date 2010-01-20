@@ -10,7 +10,7 @@ module Jpmobile
     def self.detect(email)
       Jpmobile::Mobile.carriers.each do |const|
         c = Jpmobile::Mobile.const_get(const)
-        return c if c::MAIL_ADDRESS_REGEXP && email =~ c::MAIL_ADDRESS_REGEXP
+        return c if c.const_defined?(:MAIL_ADDRESS_REGEXP) && email =~ c::MAIL_ADDRESS_REGEXP
       end
       nil
     end

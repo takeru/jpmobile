@@ -1,6 +1,12 @@
 # -*- coding: utf-8 -*-
 require File.dirname(__FILE__) + '/../spec_helper'
 
+# Ruby 1.9: UTF-8ソースの中に書かれたShift_JISバイト列に、
+# バイト列を変更せずにエンコーディング Shift_JIS を付ける。
+def shift_jis(str)
+  str.tap {|s| s.force_encoding('Shift_JIS') if s.respond_to? :force_encoding }
+end
+
 describe "文字コードフィルタが動作しているとき", :shared => true do
   it "はhtml以外は変換しないこと" do
     get :rawdata
@@ -29,7 +35,7 @@ describe "Shift_JISで通信する端末との通信", :shared => true do
     assigns[:q].should == "アブラカダブラ"
   end
   it "は半角カナのparamsを変換しないこと" do
-    get :index, :q => "\261\314\336\327\266\300\336\314\336\327" # アブラカダブラ半角,SJIS
+    get :index, :q => shift_jis("\261\314\336\327\266\300\336\314\336\327") # アブラカダブラ半角,SJIS
     assigns[:q].should == "ｱﾌﾞﾗｶﾀﾞﾌﾞﾗ"
   end
   it_should_behave_like "文字コードフィルタが動作しているとき"
@@ -60,7 +66,7 @@ end
 describe "Shift_JISで通信する端末との通信(半角変換付き)", :shared => true do
   it "は半角に変換されShift_JISで携帯に送出されること" do
     get :abracadabra_utf8
-    response.body.should == "\261\314\336\327\266\300\336\314\336\327" # アブラカダブラ半角,SJIS
+    response.body.should == shift_jis("\261\314\336\327\266\300\336\314\336\327") # アブラカダブラ半角,SJIS
     response.charset.should == "Shift_JIS"
   end
   it "はShift_JISで渡されたパラメタがparamsにUTF-8に変換されて格納されること" do
@@ -68,7 +74,7 @@ describe "Shift_JISで通信する端末との通信(半角変換付き)", :shar
     assigns[:q].should == "アブラカダブラ"
   end
   it "は半角Shift_JISで渡されたパラメタがparamsに全角UTF-8に変換されて格納されること" do
-    get :index, :q => "\261\314\336\327\266\300\336\314\336\327" # アブラカダブラ半角,SJIS
+    get :index, :q => shift_jis("\261\314\336\327\266\300\336\314\336\327") # アブラカダブラ半角,SJIS
     assigns[:q].should == "アブラカダブラ"
   end
   it_should_behave_like "文字コードフィルタが動作しているとき"

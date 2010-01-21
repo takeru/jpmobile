@@ -15,6 +15,7 @@ begin
       t.spec_opts = File.read(File.join(spec_dir, 'spec.opts')).split
       t.spec_files = FileList[File.join(spec_dir, 'unit', '**', '*_spec.rb')]
       t.spec_files += FileList[File.join(test_dir, 'legacy', '**', '*_test.rb')]
+      t.libs << '.'
     end
   end
 rescue LoadError

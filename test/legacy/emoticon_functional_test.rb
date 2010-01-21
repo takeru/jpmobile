@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 require File.dirname(__FILE__)+'/helper'
+require 'jpmobile/filter'
 
 class EmoticonTestController < ActionController::Base
   mobile_filter

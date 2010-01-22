@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 require File.dirname(__FILE__)+'/helper'
 require 'hpricot'
+require 'jpmobile/helpers'
 
 class FakeView
   include Jpmobile::Helpers

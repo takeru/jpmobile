@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 require File.dirname(__FILE__)+'/helper'
+require 'jpmobile/position'
 
 class AuTest < Test::Unit::TestCase
   # au, 端末種別の識別

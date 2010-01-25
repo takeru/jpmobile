@@ -32,6 +32,14 @@ namespace :test do
   end
   desc "Generate rails app and run jpmobile tests in the app"
   task :rails, [:versions] do |t, args|
+    is_jruby = RUBY_PLATFORM=="java"
+    cmd_rails = "rails"
+    cmd_rake  = "rake"
+    if is_jruby
+      cmd_rails = "jruby -S rails"
+      cmd_rake  = "jruby -S rake"
+    end
+
     rails_root     = "test/rails/rails_root"
     relative_root  = "../../../"
     rails_versions = args.versions.split("/") rescue ["2.3.5"]
@@ -43,7 +51,12 @@ namespace :test do
       # generate rails app
       FileUtils.rm_rf(rails_root)
       FileUtils.mkdir_p(rails_root)
-      system "rails _#{rails_version}_ -q --force #{rails_root}"
+      system "#{cmd_rails} _#{rails_version}_ -q --force #{rails_root}"
+      if is_jruby
+        system "sed -e 's/: sqlite3/: jdbcsqlite3/g' #{rails_root}/config/database.yml > #{rails_root}/config/database.yml.jruby"
+        system "mv #{rails_root}/config/database.yml.jruby #{rails_root}/config/database.yml"
+        #system "mv #{rails_root}/config/database.yml #{rails_root}/config/database.yml.disable_db"
+      end
 
       # setup jpmobile
       plugin_path = File.join(rails_root, 'vendor', 'plugins', 'jpmobile')
@@ -75,8 +88,8 @@ END
 
       # run tests in rails
       cd rails_root
-      sh "rake db:migrate"
-      sh "rake spec"
+      sh "#{cmd_rake} db:migrate"
+      sh "#{cmd_rake} spec" unless is_jruby # TODO jrubyだと"Task not supported by 'jdbcsqlite3'"となってしまう
 
       cd relative_root
     end

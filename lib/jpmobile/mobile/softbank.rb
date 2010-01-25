@@ -98,7 +98,9 @@ module Jpmobile::Mobile
       pos = Jpmobile::Position.new
       pos.lat = Jpmobile::Position.dms2deg($1,$2,$3)
       pos.lon = Jpmobile::Position.dms2deg($4,$5,$6)
-      pos.options = {"address"=>CGI.unescape($7).toutf8}
+      address = Kconv.kconv(CGI.unescape($7), Kconv::UTF8, Kconv::SJIS)
+      pos.options = {"address"=>address}
+      #pos.options = {"address"=>CGI.unescape($7).toutf8}
       pos.tokyo2wgs84!
       return pos
     end
